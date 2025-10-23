@@ -8,78 +8,14 @@ const events = [
         time: "8:00 PM",
         location: "Estadio Nacional",
         capacity: 300,
-        bubbles: false,
-        cancelBubble: false,
-        cancelable: false,
-        composed: false,
-        currentTarget: undefined,
-        defaultPrevented: false,
-        eventPhase: 0,
-        isTrusted: false,
-        returnValue: false,
-        srcElement: undefined,
-        target: undefined,
-        timeStamp: 0,
-        type: "",
-        composedPath: function () {
-            throw new Error("Function not implemented.");
-        },
-        initEvent: function (type, bubbles, cancelable) {
-            throw new Error("Function not implemented.");
-        },
-        preventDefault: function () {
-            throw new Error("Function not implemented.");
-        },
-        stopImmediatePropagation: function () {
-            throw new Error("Function not implemented.");
-        },
-        stopPropagation: function () {
-            throw new Error("Function not implemented.");
-        },
-        NONE: 0,
-        CAPTURING_PHASE: 1,
-        AT_TARGET: 2,
-        BUBBLING_PHASE: 3
     },
     {
         id: 2,
-        title: "Vibra Perú 2025",
+        title: "Vibes Perú 2025",
         date: "22 Oct 2025",
         time: "6:00 PM",
-        location: "Green Arena",
+        location: "Great Arena",
         capacity: 2500,
-        bubbles: false,
-        cancelBubble: false,
-        cancelable: false,
-        composed: false,
-        currentTarget: undefined,
-        defaultPrevented: false,
-        eventPhase: 0,
-        isTrusted: false,
-        returnValue: false,
-        srcElement: undefined,
-        target: undefined,
-        timeStamp: 0,
-        type: "",
-        composedPath: function () {
-            throw new Error("Function not implemented.");
-        },
-        initEvent: function (type, bubbles, cancelable) {
-            throw new Error("Function not implemented.");
-        },
-        preventDefault: function () {
-            throw new Error("Function not implemented.");
-        },
-        stopImmediatePropagation: function () {
-            throw new Error("Function not implemented.");
-        },
-        stopPropagation: function () {
-            throw new Error("Function not implemented.");
-        },
-        NONE: 0,
-        CAPTURING_PHASE: 1,
-        AT_TARGET: 2,
-        BUBBLING_PHASE: 3
     },
     {
         id: 3,
@@ -88,44 +24,13 @@ const events = [
         time: "11:00 AM",
         location: "Parque de la Amistad",
         capacity: 500,
-        bubbles: false,
-        cancelBubble: false,
-        cancelable: false,
-        composed: false,
-        currentTarget: undefined,
-        defaultPrevented: false,
-        eventPhase: 0,
-        isTrusted: false,
-        returnValue: false,
-        srcElement: undefined,
-        target: undefined,
-        timeStamp: 0,
-        type: "",
-        composedPath: function () {
-            throw new Error("Function not implemented.");
-        },
-        initEvent: function (type, bubbles, cancelable) {
-            throw new Error("Function not implemented.");
-        },
-        preventDefault: function () {
-            throw new Error("Function not implemented.");
-        },
-        stopImmediatePropagation: function () {
-            throw new Error("Function not implemented.");
-        },
-        stopPropagation: function () {
-            throw new Error("Function not implemented.");
-        },
-        NONE: 0,
-        CAPTURING_PHASE: 1,
-        AT_TARGET: 2,
-        BUBBLING_PHASE: 3
     },
 ];
 // Initialize app
 function initializeApp() {
     console.log("[v0] Eventía app initialized");
     setupEventListeners();
+    setupAuthFormListeners();
     loadEvents();
 }
 // Setup event listeners
@@ -185,12 +90,78 @@ function handleCategoryClick(card) {
 // Handle login
 function handleLogin() {
     console.log("[v0] Login button clicked");
-    alert("Redirigiendo a página de inicio de sesión...");
+    window.location.href = "login.html";
 }
 // Handle register
 function handleRegister() {
     console.log("[v0] Register button clicked");
-    alert("Redirigiendo a página de registro...");
+    window.location.href = "register.html";
+}
+// Setup auth form handlers for login and register pages
+function setupAuthFormListeners() {
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => handleLoginSubmit(e));
+    }
+    if (registerForm) {
+        registerForm.addEventListener("submit", (e) => handleRegisterSubmit(e));
+    }
+    // Account type selector for register page
+    const accountTypeButtons = document.querySelectorAll(".account-type-btn");
+    accountTypeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            accountTypeButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            console.log(`[v0] Account type selected: ${btn.getAttribute("data-type")}`);
+        });
+    });
+    // Social login buttons
+    const socialButtons = document.querySelectorAll(".btn-social");
+    socialButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const provider = btn.classList.contains("google") ? "Google" : "Facebook";
+            console.log(`[v0] Social login with ${provider}`);
+            alert(`Iniciando sesión con ${provider}...`);
+        });
+    });
+}
+function handleLoginSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.querySelector("#email").value;
+    const remember = form.querySelector("#remember").checked;
+    console.log(`[v0] Login attempt: ${email}, Remember: ${remember}`);
+    alert(`Iniciando sesión con: ${email}`);
+    // Redirect to home after login
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1000);
+}
+function handleRegisterSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const nombre = form.querySelector("#nombre").value;
+    const apellidos = form.querySelector("#apellidos").value;
+    const email = form.querySelector("#email-register").value;
+    const password = form.querySelector("#password-register").value;
+    const confirmPassword = form.querySelector("#confirm-password").value;
+    const terms = form.querySelector("#terms").checked;
+    if (password !== confirmPassword) {
+        alert("Las contraseñas no coinciden");
+        return;
+    }
+    if (!terms) {
+        alert("Debes aceptar los términos y condiciones");
+        return;
+    }
+    console.log(`[v0] Register attempt: ${nombre} ${apellidos} - ${email}`);
+    alert(`Cuenta creada exitosamente para: ${email}`);
+    // Redirect to login after registration
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 1000);
 }
 // Load events
 function loadEvents() {

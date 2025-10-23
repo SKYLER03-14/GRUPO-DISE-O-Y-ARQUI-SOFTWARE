@@ -40,6 +40,7 @@ const events: EventItem[] = [
 function initializeApp(): void {
   console.log("[v0] Eventía app initialized")
   setupEventListeners()
+  setupAuthFormListeners()
   loadEvents()
 }
 
@@ -110,13 +111,90 @@ function handleCategoryClick(card: Element): void {
 // Handle login
 function handleLogin(): void {
   console.log("[v0] Login button clicked")
-  alert("Redirigiendo a página de inicio de sesión...")
+  window.location.href = "login.html"
 }
 
 // Handle register
 function handleRegister(): void {
   console.log("[v0] Register button clicked")
-  alert("Redirigiendo a página de registro...")
+  window.location.href = "register.html"
+}
+
+// Setup auth form handlers for login and register pages
+function setupAuthFormListeners(): void {
+  const loginForm = document.getElementById("loginForm") as HTMLFormElement
+  const registerForm = document.getElementById("registerForm") as HTMLFormElement
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => handleLoginSubmit(e))
+  }
+
+  if (registerForm) {
+    registerForm.addEventListener("submit", (e) => handleRegisterSubmit(e))
+  }
+
+  // Account type selector for register page
+  const accountTypeButtons = document.querySelectorAll(".account-type-btn")
+  accountTypeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      accountTypeButtons.forEach((b) => b.classList.remove("active"))
+      btn.classList.add("active")
+      console.log(`[v0] Account type selected: ${btn.getAttribute("data-type")}`)
+    })
+  })
+
+  // Social login buttons
+  const socialButtons = document.querySelectorAll(".btn-social")
+  socialButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      const provider = btn.classList.contains("google") ? "Google" : "Facebook"
+      console.log(`[v0] Social login with ${provider}`)
+      alert(`Iniciando sesión con ${provider}...`)
+    })
+  })
+}
+
+function handleLoginSubmit(e: Event): void {
+  e.preventDefault()
+  const form = e.target as HTMLFormElement
+  const email = (form.querySelector("#email") as HTMLInputElement).value
+  const remember = (form.querySelector("#remember") as HTMLInputElement).checked
+
+  console.log(`[v0] Login attempt: ${email}, Remember: ${remember}`)
+  alert(`Iniciando sesión con: ${email}`)
+  // Redirect to home after login
+  setTimeout(() => {
+    window.location.href = "index.html"
+  }, 1000)
+}
+
+function handleRegisterSubmit(e: Event): void {
+  e.preventDefault()
+  const form = e.target as HTMLFormElement
+  const nombre = (form.querySelector("#nombre") as HTMLInputElement).value
+  const apellidos = (form.querySelector("#apellidos") as HTMLInputElement).value
+  const email = (form.querySelector("#email-register") as HTMLInputElement).value
+  const password = (form.querySelector("#password-register") as HTMLInputElement).value
+  const confirmPassword = (form.querySelector("#confirm-password") as HTMLInputElement).value
+  const terms = (form.querySelector("#terms") as HTMLInputElement).checked
+
+  if (password !== confirmPassword) {
+    alert("Las contraseñas no coinciden")
+    return
+  }
+
+  if (!terms) {
+    alert("Debes aceptar los términos y condiciones")
+    return
+  }
+
+  console.log(`[v0] Register attempt: ${nombre} ${apellidos} - ${email}`)
+  alert(`Cuenta creada exitosamente para: ${email}`)
+  // Redirect to login after registration
+  setTimeout(() => {
+    window.location.href = "login.html"
+  }, 1000)
 }
 
 // Load events
