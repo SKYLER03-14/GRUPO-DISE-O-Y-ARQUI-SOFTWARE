@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventía - Descubre los mejores eventos cerca de ti</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                    <rect x="14" y="2" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                    <rect x="2" y="14" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                    <rect x="14" y="14" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                </svg>
+                <span>Eventia</span>
+            </div>
+            <nav class="nav">
+                <a href="#eventos">Eventos</a>
+                <a href="#categorias">Categorías</a>
+                <a href="#tickets">Mis Tickets</a>
+                <a href="#ayuda">Ayuda</a>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-login">Iniciar Sesión</button>
+                <button class="btn-register">Registrarse</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Descubre los mejores<br>eventos cerca de ti</h1>
+            <p>Compra las entradas de forma segura, utiliza QR de manera instantánea y vive experiencias inolvidables.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar eventos...">
+                <button class="btn-search">Buscar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events Section -->
+    <section class="featured-events" id="eventos">
+        <h2>Eventos Destacados</h2>
+        <p class="subtitle">Los eventos más populares de esta semana</p>
+        <div class="events-grid">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Festival de Electrónica">
+                </div>
+                <div class="event-info">
+                    <h3>Festival de Electrónica</h3>
+                    <div class="event-details">
+                        <span class="detail">📅 15 Oct 2025</span>
+                        <span class="detail">🕐 8:00 PM</span>
+                    </div>
+                    <div class="event-details">
+                        <span class="detail">📍 Estadio Nacional</span>
+                        <span class="detail">👥 300</span>
+                    </div>
+                    <button class="btn-details">Ver detalles</button>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Vibra Perú 2025">
+                </div>
+                <div class="event-info">
+                    <h3>Vibes Perú 2025</h3>
+                    <div class="event-details">
+                        <span class="detail">📅 22 Oct 2025</span>
+                        <span class="detail">🕐 6:00 PM</span>
+                    </div>
+                    <div class="event-details">
+                        <span class="detail">📍 Green Arena</span>
+                        <span class="detail">👥 2500</span>
+                    </div>
+                    <button class="btn-details">Ver detalles</button>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Feria Gastronómica Mixtura">
+                </div>
+                <div class="event-info">
+                    <h3>Feria Gastronómica Mixtura</h3>
+                    <div class="event-details">
+                        <span class="detail">📅 29 Oct 2025</span>
+                        <span class="detail">🕐 11:00 AM</span>
+                    </div>
+                    <div class="event-details">
+                        <span class="detail">📍 Parque de la Amistad</span>
+                        <span class="detail">👥 500</span>
+                    </div>
+                    <button class="btn-details">Ver detalles</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categorias">
+        <h2>Explora por categorías</h2>
+        <p class="subtitle">Encuentra eventos de tu interés</p>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🎵</div>
+                <h3>Música</h3>
+                <p>21 eventos</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚽</div>
+                <h3>Deportes</h3>
+                <p>15 eventos</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎭</div>
+                <h3>Teatro</h3>
+                <p>8 eventos</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>Tecnología</h3>
+                <p>12 eventos</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🍽️</div>
+                <h3>Gastronomía</h3>
+                <p>18 eventos</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3>Arte</h3>
+                <p>10 eventos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                        <rect x="14" y="2" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                        <rect x="2" y="14" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                        <rect x="14" y="14" width="8" height="8" fill="#17a2b8" stroke="#17a2b8" stroke-width="2"/>
+                    </svg>
+                    <span>Eventía</span>
+                </div>
+                <p>La plataforma líder en gestión de eventos y venta de tickets en línea.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Eventos</h4>
+                <ul>
+                    <li><a href="#buscar">Buscar eventos</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#populares">Eventos Populares</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Soporte</h4>
+                <ul>
+                    <li><a href="#centro">Centro de Ayuda</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Organizadores</h4>
+                <ul>
+                    <li><a href="#crear">Crear Evento</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#reportes">Reportes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Eventia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="dist/main.js"></script>
+</body>
+</html>

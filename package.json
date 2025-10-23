@@ -1,0 +1,37 @@
+{
+  "name": "eventia-platform",
+  "version": "1.0.0",
+  "description": "Eventía - Event discovery platform",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "live-server",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "events",
+    "tickets",
+    "platform"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "live-server": "^1.2.2",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/node": "24.9.1",
+    "tailwindcss": "4.1.15",
+    "postcss": "8.5.6"
+  },
+  "dependencies": {
+    "next": "16.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "0.546.0",
+    "tailwind-merge": "3.3.1",
+    "tailwindcss-animate": "1.0.7"
+  }
+}
